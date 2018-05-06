@@ -19,35 +19,35 @@
 namespace org.magma.max
 
 /**
- * An abstract transaction that is related to a Shipment
+ * An abstract transaction that is related to a Container
  */
-abstract transaction ShipmentTransaction {
-  --> Shipment shipment
+abstract transaction ContainerTransaction {
+  --> Container container
 }
 
 /**
- * Actualisation of the position of the shipment
+ * Actualisation of the position of the container
  */
-transaction PositionReading extends ShipmentTransaction {
+transaction PositionReading extends ContainerTransaction {
   o Double latitude
   o Double longitude
   o DateTime date
 }
 
 /**
- * The status of a shipment
+ * The status of a container
  */
-enum ShipmentStatus {
+enum ContainerStatus {
   o IN_SITE
   o OFF_SITE
 }
 
 /**
- * A shipment being tracked as an asset on the ledger
+ * A container being tracked as an asset on the ledger
  */
-asset Shipment identified by shipmentId {
-  o String shipmentId
-  o ShipmentStatus status
+asset Container identified by containerId {
+  o String containerId
+  o ContainerStatus status
   o PositionReading[] positionReadings optional
   --> Contract contract
 }
@@ -56,7 +56,7 @@ asset Shipment identified by shipmentId {
  * Defines a contract between a Responsible and an Container to ship using
  * a Owner, paying a set unit price. The unit price is multiplied by
  * a penality factor proportional to the deviation from the min and max
- * negociated temperatures for the shipment.
+ * negociated temperatures for the container.
  */
 asset Contract identified by contractId {
   o String contractId
@@ -122,8 +122,8 @@ participant Site identified by id {
  * Event to say that the container has changed
  */
 event hasChanged {
-  --> Shipment asset
-  o ShipmentStatus status
+  --> Container asset
+  o ContainerStatus status
   o DateTime date
   o DateTime ts
 }
