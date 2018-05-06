@@ -110,10 +110,10 @@ participant Site identified by id {
  * Event to say that the container has changed
  */
 event hasChanged {
-  o String id_container
-  o ContainerStatus status
-  o DateTime date
-  o DateTime ts
+    --> Container container
+    o ContainerStatus status
+    o DateTime date
+    o DateTime ts
 }
 
 /**
