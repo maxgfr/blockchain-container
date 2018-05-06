@@ -96,8 +96,8 @@ enum Type {
 /**
  * A Site is a type of participant in the network
  */
-participant Site identified by id {
-    o String id
+participant Site identified by identifier {
+    o String identifier
     o Double longitude
     o Double latitude
     o Double geofence
