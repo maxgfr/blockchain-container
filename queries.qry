@@ -1,0 +1,8 @@
+/** Queries for Magma business network
+*/
+
+query selectCommodities {
+  description: "Select all sites"
+  statement:
+      SELECT org.magma.max.Site
+}

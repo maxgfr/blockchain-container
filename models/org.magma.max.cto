@@ -18,16 +18,6 @@
 
 namespace org.magma.max
 
-
-/**
- * The status of a shipment
- */
-enum ShipmentStatus {
-  o CREATED
-  o IN_TRANSIT
-  o ARRIVED
-}
-
 /**
  * An abstract transaction that is related to a Shipment
  */
@@ -39,14 +29,17 @@ abstract transaction ShipmentTransaction {
  * Actualisation of the position of the shipment
  */
 transaction PositionReading extends ShipmentTransaction {
-  o Long pos_x
-  o Long pos_y
+  o Double latitude
+  o Double longitude
+  o DateTime timestamp
 }
 
 /**
- * A notification that a shipment has been received by the site
+ * The status of a shipment
  */
-transaction ShipmentReceived extends ShipmentTransaction {
+enum ShipmentStatus {
+  o IN_SITE
+  o OFF_SITE
 }
 
 /**
@@ -55,7 +48,6 @@ transaction ShipmentReceived extends ShipmentTransaction {
 asset Shipment identified by shipmentId {
   o String shipmentId
   o ShipmentStatus status
-  o Double nbcontainer
   o PositionReading[] positionReadings optional
   --> Contract contract
 }
@@ -68,11 +60,9 @@ asset Shipment identified by shipmentId {
  */
 asset Contract identified by contractId {
   o String contractId
-  --> Responsible responsible
-  --> Owner owner
-  --> Site site
-  o DateTime arrivalDateTime
-  o Double unitPrice
+  --> Responsible responsible // the receiver
+  --> Owner owner // our client
+  --> Site site // site
 }
 
 /**
@@ -88,10 +78,9 @@ concept Address {
 /**
  * An abstract participant type in this business network
  */
-abstract participant Business identified by email {
-  o String email
-  o Address address
-  o Double accountBalance
+abstract participant Business identified by id {
+  o String id
+  o Address address optional
 }
 
 /**
@@ -107,21 +96,39 @@ participant Owner extends Business {
 }
 
 /**
- * An Site is a type of participant in the network
+ * Type of site
  */
-participant Site extends Business {
+concept Type {
+  o FACTORY
+  o CUSTOMER
+  o WAREHOUSE
+  o PROVIDER
 }
 
 /**
- * JUST FOR INITIALIZING A DEMO
+ * A Site is a type of participant in the network
+ */
+participant Site identified by id {
+    o String id
+    o Double longitude
+    o Double latitude
+    o Double geofence
+    o Address address
+    o Type type
+    --> Responsible responsible
+}
+
+/**
+ * Event to say that the container has changed
+ */
+event hasChanged {
+  --> Shipment asset
+  o ShipmentStatus status
+  o DateTime timestamp
+}
+
+/**
+ * Just for initializing a demo
  */
 transaction SetupDemo {
-}
-
-/**
- * Event to say that the container was received
- */
-event isReceived {
-  --> Contract asset
-  o DateTime arrivalDateTime
 }
