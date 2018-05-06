@@ -110,7 +110,7 @@ participant Site identified by id {
  * Event to say that the container has changed
  */
 event hasChanged {
-  --> Container asset
+  o String id_container
   o ContainerStatus status
   o DateTime date
   o DateTime ts
