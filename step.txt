@@ -1,7 +1,11 @@
 cd ~/fabric-dev-servers
 ./stopFabric.sh
 ./teardownFabric.sh
+./downloadFabric.sh
 ./startFabric.sh
+composer card delete -c peeradmin@hlfv1
+composer card delete -c admin@magma
+rm -fr ~/.composer
 ./createPeerAdminCard.sh
 composer-playground
 
