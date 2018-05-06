@@ -49,20 +49,8 @@ asset Container identified by containerId {
   o String containerId
   o ContainerStatus status
   o PositionReading[] positionReadings optional
-  --> Contract contract
-}
-
-/**
- * Defines a contract between a Responsible and an Container to ship using
- * a Owner, paying a set unit price. The unit price is multiplied by
- * a penality factor proportional to the deviation from the min and max
- * negociated temperatures for the container.
- */
-asset Contract identified by contractId {
-  o String contractId
-  --> Responsible responsible // the receiver
-  --> Owner owner // our client
-  --> Site site // site
+  --> Responsible responsible // the responsible
+  --> Owner owner // the owner
 }
 
 /**
