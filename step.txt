@@ -1,3 +1,12 @@
+cd ~/fabric-dev-servers
+./stopFabric.sh
+./teardownFabric.sh
+./startFabric.sh
+./createPeerAdminCard.sh
+composer-playground
+
+
+/* FIRST TIME */
 composer archive create -t dir -n . && mv magma@0.0.1.bna dist && cd dist
 
 composer network install --card PeerAdmin@hlfv1 --archiveFile magma@0.0.1.bna
@@ -9,3 +18,7 @@ composer card import --file magma.card
 composer network ping --card admin@magma
 
 composer-rest-server --card admin@magma
+
+/* THEN */
+
+composer archive create -t dir -n .

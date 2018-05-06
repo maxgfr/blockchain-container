@@ -12,31 +12,11 @@
  * limitations under the License.
  */
 
-/**
- * Sample access control list.
- */
-rule EverybodyCanReadEverything {
-    description: "Allow all participants read access to all resources"
-    participant: "org.magma.max.SampleParticipant"
-    operation: READ
-    resource: "org.magma.max.*"
-    action: ALLOW
-}
-
-rule EverybodyCanSubmitTransactions {
-    description: "Allow all participants to submit transactions"
-    participant: "org.magma.max.SampleParticipant"
-    operation: CREATE
-    resource: "org.magma.max.SampleTransaction"
-    action: ALLOW
-}
-
-rule OwnerHasFullAccessToTheirAssets {
-    description: "Allow all participants full access to their assets"
-    participant(p): "org.magma.max.SampleParticipant"
+rule Default {
+    description: "Allow read access"
+    participant: "org.magma.max.*"
     operation: ALL
-    resource(r): "org.magma.max.SampleAsset"
-    condition: (r.owner.getIdentifier() === p.getIdentifier())
+    resource: "org.magma.max.*"
     action: ALLOW
 }
 

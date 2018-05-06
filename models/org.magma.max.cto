@@ -31,7 +31,7 @@ abstract transaction ShipmentTransaction {
 transaction PositionReading extends ShipmentTransaction {
   o Double latitude
   o Double longitude
-  o DateTime timestamp
+  o DateTime date
 }
 
 /**
@@ -98,7 +98,7 @@ participant Owner extends Business {
 /**
  * Type of site
  */
-concept Type {
+enum Type {
   o FACTORY
   o CUSTOMER
   o WAREHOUSE
@@ -124,7 +124,8 @@ participant Site identified by id {
 event hasChanged {
   --> Shipment asset
   o ShipmentStatus status
-  o DateTime timestamp
+  o DateTime date
+  o DateTime ts
 }
 
 /**
