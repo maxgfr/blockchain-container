@@ -49,7 +49,7 @@ asset Container identified by containerId {
   o String containerId
   o ContainerStatus status
   o PositionReading[] positionReadings optional
-  --> Site site // the site
+  --> Responsible responsible // the responsible
   --> Owner owner // the owner
 }
 
