@@ -47,7 +47,7 @@ enum ContainerStatus {
  */
 asset Container identified by containerId {
   o String containerId
-  o ContainerStatus[] status
+  o ContainerStatus status
   o PositionReading[] positionReadings optional
   o String[] idresponsible optional
   --> Site[] site // the site
@@ -111,7 +111,9 @@ participant Site identified by identifier {
  * Event to say that the container has changed
  */
 event hasChanged {
-    --> Container container
+    o String id_container
+    o Double latitude
+    o Double longitude
     o ContainerStatus status
     o Long date
     o DateTime ts
