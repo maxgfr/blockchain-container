@@ -31,7 +31,7 @@ abstract transaction ContainerTransaction {
 transaction PositionReading extends ContainerTransaction {
   o Double latitude
   o Double longitude
-  o DateTime date
+  o Long date
 }
 
 /**
@@ -113,7 +113,7 @@ participant Site identified by identifier {
 event hasChanged {
     --> Container container
     o ContainerStatus status
-    o DateTime date
+    o Long date
     o DateTime ts
 }
 
