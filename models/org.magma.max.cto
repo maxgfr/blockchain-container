@@ -47,10 +47,10 @@ enum ContainerStatus {
  */
 asset Container identified by containerId {
   o String containerId
-  o ContainerStatus status
+  o ContainerStatus[] status
   o PositionReading[] positionReadings optional
-  o String idresponsible optional
-  --> Site site // the site
+  o String[] idresponsible optional
+  --> Site[] site // the site
   --> Owner owner // the owner
 }
 
