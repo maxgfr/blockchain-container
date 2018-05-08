@@ -104,7 +104,7 @@ participant Site identified by identifier {
     o Double geofence
     o Address address
     o Type type
-    --> Responsible responsible
+    --> Business business
 }
 
 /**
