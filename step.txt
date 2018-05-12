@@ -38,8 +38,10 @@ composer-rest-server --card admin@magma
 
 /* THEN */
 
+//Il faut changer la version du package json en 0.0.X
+
 composer archive create -t dir -n . && mv magma@0.0.X.bna dist && cd dist
 
-composer network install --archiveFile magma@0.0.X.bna  --card peeradmin@hlfv1
+composer network install --archiveFile magma@0.0.X.bna  --card PeerAdmin@hlfv1
 
-composer network upgrade -c peeradmin@hlfv1 -n magma -V 0.0.2
+composer network upgrade -c PeerAdmin@hlfv1 -n magma -V 0.0.X
