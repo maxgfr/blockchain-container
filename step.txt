@@ -1,3 +1,15 @@
+npm uninstall -g composer-cli
+npm uninstall -g composer-rest-server
+npm uninstall -g generator-hyperledger-composer
+npm uninstall -g yo
+npm uninstall -g composer-playground
+
+npm install -g composer-cli
+npm install -g composer-rest-server
+npm install -g generator-hyperledger-composer
+npm install -g yo
+npm install -g composer-playground
+
 cd ~/fabric-dev-servers
 ./stopFabric.sh
 ./teardownFabric.sh
