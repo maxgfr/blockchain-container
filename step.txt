@@ -15,6 +15,9 @@ cd ~/fabric-dev-servers
 ./teardownFabric.sh
 composer card delete -c peeradmin@hlfv1
 composer card delete -c admin@magma
+docker kill $(docker ps -q)
+docker rm $(docker ps -aq)
+docker rmi $(docker images dev-* -q)
 
 ./downloadFabric.sh
 ./startFabric.sh
