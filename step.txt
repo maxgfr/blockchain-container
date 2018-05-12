@@ -24,13 +24,13 @@ composer-playground
 
 
 /* FIRST TIME */
-composer archive create -t dir -n . && mv magma@0.0.1.bna dist && cd dist
+composer archive create --sourceType dir --sourceName . -a ./dist/magma.bna && cd dist
 
-composer network install --card PeerAdmin@hlfv1 --archiveFile magma@0.0.1.bna
+composer network install --card PeerAdmin@hlfv1 --archiveFile magma.bna
 
-composer network start --networkName magma --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file magma.card
+composer network start --networkName magma --networkVersion 0.0.2 --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw
 
-composer card import --file magma.card
+composer card import --file admin@magma.card
 
 composer network ping --card admin@magma
 
