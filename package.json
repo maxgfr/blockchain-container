@@ -2,7 +2,7 @@
   "engines": {
     "composer": "^0.19.4"
   },
-  "name": "magma",
+  "name": "magma-network",
   "version": "1.0.0",
   "description": "IOT network",
   "scripts": {
