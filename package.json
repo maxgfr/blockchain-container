@@ -3,7 +3,7 @@
     "composer": "^0.19.4"
   },
   "name": "magma",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "IOT network",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/magma.bna",
