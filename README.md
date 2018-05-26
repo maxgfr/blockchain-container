@@ -60,7 +60,7 @@ composer-rest-server --card admin@magma
 ### If you want to upgrade your network :
 
 ```shell
-#If You have to update the package.json en 0.0.X
+#You have to update the package.json en 0.0.X
 
 composer archive create -t dir -n . && mv magma@0.0.X.bna dist && cd dist
 
