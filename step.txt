@@ -31,13 +31,13 @@ composer archive create --sourceType dir --sourceName . -a ./dist/magma.bna && c
 
 composer network install --card PeerAdmin@hlfv1 --archiveFile magma.bna
 
-composer network start --networkName magma --networkVersion 1.0.0 --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw
+composer network start --networkName magma-network --networkVersion 1.0.0 --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw
 
-composer card import --file admin@magma.card
+composer card import --file admin@magma-network.card
 
-composer network ping --card admin@magma
+composer network ping --card admin@magma-network
 
-composer-rest-server --card admin@magma
+composer-rest-server --card admin@magma-network
 
 /* THEN */
 
