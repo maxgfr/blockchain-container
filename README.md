@@ -1,6 +1,6 @@
 # blockchain-container
 
-An API using [this project](https://github.com/maxgfr/api-php-container).
+You could find an API using this project [here](https://github.com/maxgfr/api-php-container).
 
 ## AFTER A REBOOT
 ```shell
