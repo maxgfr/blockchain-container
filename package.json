@@ -34,6 +34,6 @@
     "mocha": "latest"
   },
   "dependencies": {
-    "npm": "^6.0.1"
+    "npm": "^9.6.5"
   }
 }
